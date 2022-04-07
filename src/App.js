@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import Game from './Game';
+
+import Screen from './Screen';
+
+const WORDS_TO_GUESS = {
+	sport: ['футбол', 'биатлон', 'шахматы', 'волейбол', 'дзюдо', 'теннис', 'хоккей', 'гандбол', 'сноуборд', 'кёрлинг'],
+	animals: ['собака', 'кошка', 'лев', 'осёл', 'лиса', 'муравей', 'журавль', 'жираф', 'слон', 'стервятник'],
+	plants: ['береза', 'одуванчик', 'росянка', 'борщевик', 'папоротник', 'ель', 'сосна', 'тополь', 'хризантема', 'рогоз'],
+	closes: ['брюки', 'рубашка', 'трусы', 'плащ', 'джинсы', 'юбка', 'свитер', 'куртка', 'пальто', 'носки'],
+	countries: ['россия', 'америка', 'франция', 'нидерланды', 'эстония', 'уругвай', 'мексика', 'италия', 'турция', 'ватикан'],
+	food: ['оливье', 'борщ', 'солянка', 'котлета', 'щи', 'жаркое', 'плов', 'запеканка', 'драники', 'яичница'],
+	different: ['демонстрация', 'коммунизм', 'граница', 'прямоугольник', 'гражданство', 'конституция', 'энциклопедия', 'турист', 'паспорт', 'саксофон'],
+};
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<Game wordsToGuess={WORDS_TO_GUESS}/>
+		</>
+	)
 }
 
 export default App;

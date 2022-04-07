@@ -36,3 +36,137 @@
     transform: rotate(360deg);
   }
 }
+
+
+body {
+    width: 600px;
+    margin: 0 auto;
+    font-family: "Roboto", sans-serif;
+}
+
+header {
+    display: flex;
+    margin: 20px 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-picture {
+    width: 100%;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.word-container {
+    display: flex;
+    justify-content: center;
+}
+
+.word-to-guess {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.word-to-guess div {
+    vertical-align: top;
+    border: 2px solid #4C1919;
+    border-radius: 10%;
+    display: inline-block;
+    margin: 5px;
+    color: black;
+    width: 30px;
+    height: 60px;
+    background-image: url("/images/wood.jpg");
+    text-align: center;
+    font-size: 25px;
+    line-height: 60px;
+}
+
+.word-to-guess div.guessed {
+    color: black;
+}
+
+.letter {
+    width: 25px;
+    height: 25px;
+    margin: 4px 2px;
+}
+
+.alfabet {
+    width: 360px;
+    margin: 0 auto;
+}
+
+.man-picture {
+    width: 140px;
+    height: 185px;
+    border: 2px solid black;
+    margin: 0 auto;
+    background-image: url("/images/man.jpg");
+    background-repeat: no-repeat;
+    background-size: 640px;
+    background-position:-157px -11px;
+}
+
+.misses-1 {
+    background-position: -290px -11px;
+}
+
+.misses-2 {
+    background-position: -440px -11px;
+}
+
+.misses-3 {
+    background-position: -29px -211px;
+}
+
+.misses-4 {
+    background-position: -164px -211px;
+}
+
+.misses-5 {
+    background-position: -293px -211px;
+}
+
+.misses-6 {
+    background-position: -452px -211px;
+}
+
+.categories-container {
+    margin-top: 25px;
+    width: 185px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.categories {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.category-info {
+    width: 135px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.game-start {
+    margin: 10px auto;
+    display: block;
+}
+
+.hint {
+    margin: 10px auto;
+    display: block;
+}
+
+.hidden{
+    display: none;
+}
