@@ -79,7 +79,7 @@ h1 {
     color: black;
     width: 30px;
     height: 60px;
-    background-image: url("/images/wood.jpg");
+    background-image: url("./images/wood.jpg");
     text-align: center;
     font-size: 25px;
     line-height: 60px;
@@ -95,8 +95,8 @@ h1 {
     margin: 4px 2px;
 }
 
-.alfabet {
-    width: 360px;
+.alphabet {
+    width: 330px;
     margin: 0 auto;
 }
 
@@ -105,7 +105,7 @@ h1 {
     height: 185px;
     border: 2px solid black;
     margin: 0 auto;
-    background-image: url("/images/man.jpg");
+    background-image: url("./images/man.jpg");
     background-repeat: no-repeat;
     background-size: 640px;
     background-position:-157px -11px;
