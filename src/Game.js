@@ -4,6 +4,7 @@ import Header from './Header';
 import GamePicture from './GamePicture';
 import CategoryChoice from "./CategoryChoice";
 import GameField from "./GameField";
+import Description from "./Description";
 
 export default class Game extends React.Component {
 	constructor(props) {
@@ -11,12 +12,14 @@ export default class Game extends React.Component {
 		this.state = {
 			screen: 'startScreen',
 			chosenCategory: Object.keys(this.props.wordsToGuess)[0],
+			rulesAreShown: false,
 		}
 		this.showCategoryChoiceScreen = this.showCategoryChoiceScreen.bind(this);
 		this.chooseCategory = this.chooseCategory.bind(this);
 		this.startNewGame = this.startNewGame.bind(this);
 		this.showHint = this.showHint.bind(this);
 		this.onClick = this.onClick.bind(this);
+		this.pressDescriptionButton = this.pressDescriptionButton.bind(this);
 	}
 
 	showCategoryChoiceScreen() {
@@ -57,6 +60,22 @@ export default class Game extends React.Component {
 			wordToGuess: this.chooseWordToGuess(),
 			hintIsUsed: false,
 		})
+	}
+
+	pressDescriptionButton() {
+		if (!this.state.rulesAreShown) {
+			this.setState({
+				screen: 'description',
+				preScreen: this.state.screen,
+				rulesAreShown: true,
+			})
+		} else {
+			this.setState({
+				screen: this.state.preScreen,
+				rulesAreShown: false,
+			})
+		}
+
 	}
 
 	showHint() {
@@ -140,7 +159,10 @@ export default class Game extends React.Component {
 	render() {
 		return (
 			<>
-				<Header showCategoryChoiceScreen={this.showCategoryChoiceScreen}/>
+				<Header
+					showCategoryChoiceScreen={this.showCategoryChoiceScreen}
+					pressDescriptionButton={this.pressDescriptionButton}
+					screen={this.state.screen}/>
 				{this.state.screen === 'startScreen' && <GamePicture />}
 				{this.state.screen === 'categoryChoice' &&
 					<CategoryChoice
@@ -161,6 +183,9 @@ export default class Game extends React.Component {
 						hintIsUsed={this.state.hintIsUsed}
 						showHint={this.showHint}
 						onClick={this.onClick} />}
+				{this.state.screen === 'description' &&
+					<Description
+						pressDescriptionButton={this.pressDescriptionButton}/>}
 			</>
 		)
 	}
