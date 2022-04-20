@@ -5,6 +5,7 @@ export default class CategoryChoice extends React.Component {
 		super(props);
 		this.chooseCategory = this.chooseCategory.bind(this);
 	}
+
 	categories = Object.keys(this.props.wordsToGuess);
 	categoryNames = this.categories.map((category) =>
 	  <option key={category} value={category}>{this.props.categoryLocalizedNames[category]}</option>

@@ -5,7 +5,7 @@ import GamePicture from './GamePicture';
 import CategoryChoice from "./CategoryChoice";
 import GameField from "./GameField";
 import Description from "./Description";
-import { confirmAlert } from 'react-confirm-alert'; // Import
+import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default class Game extends React.Component {
@@ -27,20 +27,20 @@ export default class Game extends React.Component {
 	showCategoryChoiceScreen() {
 		this.setState({
 			screen: 'categoryChoice',
-		})
+		});
 	}
 
 	chooseWordToGuess() {
-		let wordsArray = this.props.wordsToGuess[this.state.chosenCategory];
+		const wordsArray = this.props.wordsToGuess[this.state.chosenCategory];
 
-		let randomIndex = Math.floor(Math.random() * wordsArray.length);
+		const randomIndex = Math.floor(Math.random() * wordsArray.length);
 		return wordsArray[randomIndex];
 	}
 
 	chooseCategory(chosenCategory) {
 		this.setState({
 			chosenCategory,
-		})
+		});
 	}
 
 	checkIfWon() {
@@ -61,7 +61,7 @@ export default class Game extends React.Component {
 			pressedLetters: new Set(),
 			wordToGuess: this.chooseWordToGuess(),
 			hintIsUsed: false,
-		})
+		});
 	}
 
 	pressDescriptionButton() {
@@ -77,21 +77,20 @@ export default class Game extends React.Component {
 				rulesAreShown: false,
 			})
 		}
-
 	}
 
 	showHint() {
 		let letterHint;
 
 		do {
-			let randomIndex = Math.floor(Math.random() * this.state.wordToGuess.length);
+			const randomIndex = Math.floor(Math.random() * this.state.wordToGuess.length);
 			letterHint = this.state.wordToGuess[randomIndex];
 		} while (this.state.guessedLetters.has(letterHint));
 
-		let newPressedLetters = new Set(this.state.pressedLetters);
+		const newPressedLetters = new Set(this.state.pressedLetters);
 		newPressedLetters.add(letterHint);
 
-		let newGuessedLetters = new Set(this.state.guessedLetters);
+		const newGuessedLetters = new Set(this.state.guessedLetters);
 		newGuessedLetters.add(letterHint);
 
 		this.setState({
@@ -102,12 +101,12 @@ export default class Game extends React.Component {
 	}
 
 	onClick(guessLetter) {
-		let newPressedLetters = new Set(this.state.pressedLetters);
+		const newPressedLetters = new Set(this.state.pressedLetters);
 		newPressedLetters.add(guessLetter);
 
 		this.setState({
 			pressedLetters: newPressedLetters,
-		})
+		});
 
 		let isGuessed;
 
@@ -121,10 +120,8 @@ export default class Game extends React.Component {
 			}
 		}
 
-		let shouldStartNewGame;
-
 		if (isGuessed) {
-			let newGuessedLetters = new Set(this.state.guessedLetters);
+			const newGuessedLetters = new Set(this.state.guessedLetters);
 			newGuessedLetters.add(guessLetter);
 			this.setState(state => ({
 				guessedLettersNumber: state.guessedLettersNumber + guessLetterNumber,
@@ -132,7 +129,7 @@ export default class Game extends React.Component {
 			}), () => {
 				if (this.checkIfWon()) {
 					setTimeout(() => {
-						shouldStartNewGame = confirmAlert({
+						confirmAlert({
 							title: 'Новая игра',
 							message: 'Вы выиграли! Сыграете еще раз?',
 							buttons: [
@@ -156,7 +153,7 @@ export default class Game extends React.Component {
 			}), () => {
 				if (this.checkIfLost()) {
 					setTimeout(() => {
-						shouldStartNewGame = confirmAlert({
+						confirmAlert({
 							title: 'Новая игра',
 							message: 'Вы проиграли( Сыграете еще раз?',
 							buttons: [
@@ -219,4 +216,4 @@ const CATEGORY_LOCALIZED_NAMES = {
     countries: 'страны',
     food: 'еда',
     different: 'разное',
-}
+};
