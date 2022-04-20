@@ -20,7 +20,7 @@ export default class Game extends React.Component {
 		this.chooseCategory = this.chooseCategory.bind(this);
 		this.startNewGame = this.startNewGame.bind(this);
 		this.showHint = this.showHint.bind(this);
-		this.onClick = this.onClick.bind(this);
+		this.checkChosenLetter = this.checkChosenLetter.bind(this);
 		this.pressDescriptionButton = this.pressDescriptionButton.bind(this);
 	}
 
@@ -98,7 +98,7 @@ export default class Game extends React.Component {
 		});
 	}
 
-	onClick(guessLetter) {
+	checkChosenLetter(guessLetter) {
 		const newPressedLetters = new Set(this.state.pressedLetters);
 		newPressedLetters.add(guessLetter);
 
@@ -197,7 +197,7 @@ export default class Game extends React.Component {
 						startNewGame={this.startNewGame}
 						hintIsUsed={this.state.hintIsUsed}
 						showHint={this.showHint}
-						onClick={this.onClick} />}
+						checkChosenLetter={this.checkChosenLetter} />}
 				{this.state.screen === screenTypes.description &&
 					<Description
 						pressDescriptionButton={this.pressDescriptionButton}/>}

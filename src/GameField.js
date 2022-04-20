@@ -10,7 +10,7 @@ export default class GameField extends React.Component {
 	alphabetLetters = this.alphabet.split('');
 
 	onClick(event) {
-		this.props.onClick(event.target.dataset.letterValue);
+		this.props.checkChosenLetter(event.target.dataset.letterValue);
 	}
 
 	render() {
