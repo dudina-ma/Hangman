@@ -5,6 +5,8 @@ import GamePicture from './GamePicture';
 import CategoryChoice from "./CategoryChoice";
 import GameField from "./GameField";
 import Description from "./Description";
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default class Game extends React.Component {
 	constructor(props) {
@@ -130,10 +132,20 @@ export default class Game extends React.Component {
 			}), () => {
 				if (this.checkIfWon()) {
 					setTimeout(() => {
-						shouldStartNewGame = window.confirm('Вы выиграли! Сыграете еще раз?');
-						if (shouldStartNewGame) {
-							this.startNewGame();
-						}
+						shouldStartNewGame = confirmAlert({
+							title: 'Новая игра',
+							message: 'Вы выиграли! Сыграете еще раз?',
+							buttons: [
+							  {
+								label: 'Да',
+								onClick: () => this.startNewGame()
+							  },
+							  {
+								label: 'Нет',
+								onClick: () => this.setState({screen: "startScreen"})
+							  }
+							]
+						});
 					}, 0);
 
 				}
@@ -144,16 +156,24 @@ export default class Game extends React.Component {
 			}), () => {
 				if (this.checkIfLost()) {
 					setTimeout(() => {
-						shouldStartNewGame = window.confirm('Вы проиграли( Сыграете еще раз?');
-						if (shouldStartNewGame) {
-							this.startNewGame();
-						}
+						shouldStartNewGame = confirmAlert({
+							title: 'Новая игра',
+							message: 'Вы проиграли( Сыграете еще раз?',
+							buttons: [
+							  {
+								label: 'Да',
+								onClick: () => this.startNewGame()
+							  },
+							  {
+								label: 'Нет',
+								onClick: () => this.setState({screen: "startScreen"})
+							  }
+							]
+						});
 					}, 0);
 				}
 			});
 		}
-
-		// притащить свой модал
 	}
 
 	render() {
