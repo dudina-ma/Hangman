@@ -14,7 +14,6 @@ export default class Game extends React.Component {
 		this.state = {
 			screen: 'startScreen',
 			chosenCategory: Object.keys(this.props.wordsToGuess)[0],
-			rulesAreShown: false,
 		}
 		this.showCategoryChoiceScreen = this.showCategoryChoiceScreen.bind(this);
 		this.chooseCategory = this.chooseCategory.bind(this);
@@ -65,16 +64,14 @@ export default class Game extends React.Component {
 	}
 
 	pressDescriptionButton() {
-		if (!this.state.rulesAreShown) {
+		if (this.state.screen !== 'description') {
 			this.setState({
 				screen: 'description',
 				preScreen: this.state.screen,
-				rulesAreShown: true,
 			})
 		} else {
 			this.setState({
 				screen: this.state.preScreen,
-				rulesAreShown: false,
 			})
 		}
 	}
