@@ -7,12 +7,13 @@ import GameField from "./GameField";
 import Description from "./Description";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import screenTypes from "./ScreenTypes";
 
 export default class Game extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			screen: 'startScreen',
+			screen: screenTypes.startScreen,
 			chosenCategory: Object.keys(this.props.wordsToGuess)[0],
 		}
 		this.showCategoryChoiceScreen = this.showCategoryChoiceScreen.bind(this);
@@ -25,7 +26,7 @@ export default class Game extends React.Component {
 
 	showCategoryChoiceScreen() {
 		this.setState({
-			screen: 'categoryChoice',
+			screen: screenTypes.categoryChoice,
 		});
 	}
 
@@ -53,7 +54,7 @@ export default class Game extends React.Component {
 
 	startNewGame() {
 		this.setState({
-			screen: 'gameField',
+			screen: screenTypes.gameField,
 			guessedLettersNumber: 0,
 			misses: 0,
 			guessedLetters: new Set(),
@@ -64,9 +65,9 @@ export default class Game extends React.Component {
 	}
 
 	pressDescriptionButton() {
-		if (this.state.screen !== 'description') {
+		if (this.state.screen !== screenTypes.description) {
 			this.setState({
-				screen: 'description',
+				screen: screenTypes.description,
 				preScreen: this.state.screen,
 			})
 		} else {
@@ -136,7 +137,7 @@ export default class Game extends React.Component {
 							  },
 							  {
 								label: 'Нет',
-								onClick: () => this.setState({screen: "startScreen"})
+								onClick: () => this.setState({screen: screenTypes.startScreen})
 							  }
 							]
 						});
@@ -160,7 +161,7 @@ export default class Game extends React.Component {
 							  },
 							  {
 								label: 'Нет',
-								onClick: () => this.setState({screen: "startScreen"})
+								onClick: () => this.setState({screen: screenTypes.startScreen})
 							  }
 							]
 						});
@@ -177,15 +178,15 @@ export default class Game extends React.Component {
 					showCategoryChoiceScreen={this.showCategoryChoiceScreen}
 					pressDescriptionButton={this.pressDescriptionButton}
 					screen={this.state.screen}/>
-				{this.state.screen === 'startScreen' && <GamePicture />}
-				{this.state.screen === 'categoryChoice' &&
+				{this.state.screen === screenTypes.startScreen && <GamePicture />}
+				{this.state.screen === screenTypes.categoryChoice &&
 					<CategoryChoice
 						chosenCategory={this.state.chosenCategory}
 						wordsToGuess={this.props.wordsToGuess}
 						startNewGame={this.startNewGame}
 						chooseCategory={this.chooseCategory}
 						categoryLocalizedNames={CATEGORY_LOCALIZED_NAMES}/>}
-				{this.state.screen === 'gameField' &&
+				{this.state.screen === screenTypes.gameField &&
 					<GameField
 						wordToGuess={this.state.wordToGuess}
 						chosenCategory={this.state.chosenCategory}
@@ -197,7 +198,7 @@ export default class Game extends React.Component {
 						hintIsUsed={this.state.hintIsUsed}
 						showHint={this.showHint}
 						onClick={this.onClick} />}
-				{this.state.screen === 'description' &&
+				{this.state.screen === screenTypes.description &&
 					<Description
 						pressDescriptionButton={this.pressDescriptionButton}/>}
 			</>

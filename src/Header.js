@@ -1,4 +1,5 @@
 import React from "react";
+import screenTypes from "./ScreenTypes";
 
 export default class Header extends React.Component {
 	render() {
@@ -8,7 +9,7 @@ export default class Header extends React.Component {
 				<div className="game-controls">
 					<button onClick={this.props.showCategoryChoiceScreen} className="choose-category">Выбрать категорию</button>
 					<button onClick={this.props.pressDescriptionButton} className="show-rules">
-						{this.props.screen === 'description' ? 'Скрыть правила' : 'Показать правила'}</button>
+						{this.props.screen === screenTypes.description ? 'Скрыть правила' : 'Показать правила'}</button>
 				</div>
 			</header>
 		)
