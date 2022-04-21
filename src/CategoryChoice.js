@@ -10,8 +10,7 @@ export default class CategoryChoice extends React.Component {
 		}
 	}
 
-	categories = Object.keys(this.props.wordsToGuess);
-	categoryNames = this.categories.map((category) =>
+	categoryNames = this.props.categories.map((category) =>
 	  <option key={category} value={category}>{this.props.categoryLocalizedNames[category]}</option>
 	);
 
@@ -28,7 +27,7 @@ export default class CategoryChoice extends React.Component {
 	render() {
 		return (
 			<div className="categories-container">
-				<select className="categories" name="categories" value={this.props.chosenCategory} onChange={this.chooseCategory}>
+				<select className="categories" name="categories" value={this.state.chosenCategory} onChange={this.chooseCategory}>
 					{this.categoryNames}
 				</select>
 				<button onClick={this.onCategoryChosen} className="game-start">Начать игру</button>

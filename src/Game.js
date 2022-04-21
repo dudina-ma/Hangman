@@ -188,7 +188,7 @@ export default class Game extends React.Component {
 				{this.state.screen === screenTypes.categoryChoice &&
 					<CategoryChoice
 						chosenCategory={this.state.chosenCategory}
-						wordsToGuess={this.props.wordsToGuess}
+						categories={Object.keys(this.props.wordsToGuess)}
 						onCategoryChosen={this.onCategoryChosen}
 						chooseCategory={this.chooseCategory}
 						categoryLocalizedNames={CATEGORY_LOCALIZED_NAMES}/>}
