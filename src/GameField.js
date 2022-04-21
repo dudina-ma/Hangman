@@ -15,12 +15,13 @@ export default class GameField extends React.Component {
 
 	render() {
 		const letters = this.props.wordToGuess.split('');
-		const lettersDivs = letters.map((letter) =>
-	  		<div className="word-letter">{this.props.guessedLetters.has(letter) ? letter : ''}</div>
+
+		const lettersDivs = letters.map((letter, index) =>
+			<div key={index} className="word-letter">{this.props.guessedLetters.has(letter) ? letter : ''}</div>
 		);
 
 		const alphabetLettersButtons = this.alphabetLetters.map((letter) =>
-	  		<button className="letter" disabled={this.props.pressedLetters.has(letter)} data-letter-value={letter}>{letter}</button>
+			<button key={letter} className="letter" disabled={this.props.pressedLetters.has(letter)} data-letter-value={letter}>{letter}</button>
 		);
 
 		return (

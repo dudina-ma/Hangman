@@ -4,6 +4,10 @@ export default class CategoryChoice extends React.Component {
 	constructor(props) {
 		super(props);
 		this.chooseCategory = this.chooseCategory.bind(this);
+		this.onCategoryChosen = this.onCategoryChosen.bind(this);
+		this.state = {
+			chosenCategory: this.props.chosenCategory,
+		}
 	}
 
 	categories = Object.keys(this.props.wordsToGuess);
@@ -12,7 +16,13 @@ export default class CategoryChoice extends React.Component {
 	);
 
 	chooseCategory(event) {
-		this.props.chooseCategory(event.target.value);
+		this.setState({
+			chosenCategory: event.target.value,
+		});
+	}
+
+	onCategoryChosen() {
+		this.props.onCategoryChosen(this.state.chosenCategory);
 	}
 
 	render() {
@@ -21,7 +31,7 @@ export default class CategoryChoice extends React.Component {
 				<select className="categories" name="categories" value={this.props.chosenCategory} onChange={this.chooseCategory}>
 					{this.categoryNames}
 				</select>
-				<button onClick={this.props.startNewGame} className="game-start">Начать игру</button>
+				<button onClick={this.onCategoryChosen} className="game-start">Начать игру</button>
 			</div>
 		)
 	}

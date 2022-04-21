@@ -19,6 +19,7 @@ export default class Game extends React.Component {
 		this.showCategoryChoiceScreen = this.showCategoryChoiceScreen.bind(this);
 		this.chooseCategory = this.chooseCategory.bind(this);
 		this.startNewGame = this.startNewGame.bind(this);
+		this.onCategoryChosen = this.onCategoryChosen.bind(this);
 		this.showHint = this.showHint.bind(this);
 		this.checkChosenLetter = this.checkChosenLetter.bind(this);
 		this.pressDescriptionButton = this.pressDescriptionButton.bind(this);
@@ -64,6 +65,13 @@ export default class Game extends React.Component {
 		});
 	}
 
+	onCategoryChosen(chosenCategory) {
+		this.setState({
+			chosenCategory,
+		});
+		this.startNewGame();
+	}
+
 	pressDescriptionButton() {
 		if (this.state.screen !== screenTypes.description) {
 			this.setState({
@@ -95,6 +103,7 @@ export default class Game extends React.Component {
 			pressedLetters: newPressedLetters,
 			guessedLetters: newGuessedLetters,
 			hintIsUsed: true,
+			guessedLettersNumber: this.state.guessedLettersNumber + 1,
 		});
 	}
 
@@ -126,23 +135,20 @@ export default class Game extends React.Component {
 				guessedLetters: newGuessedLetters,
 			}), () => {
 				if (this.checkIfWon()) {
-					setTimeout(() => {
-						confirmAlert({
-							title: 'Новая игра',
-							message: 'Вы выиграли! Сыграете еще раз?',
-							buttons: [
-							  {
+					confirmAlert({
+						title: 'Новая игра',
+						message: 'Вы выиграли! Сыграете еще раз?',
+						buttons: [
+							{
 								label: 'Да',
 								onClick: () => this.startNewGame()
-							  },
-							  {
+							},
+							{
 								label: 'Нет',
 								onClick: () => this.setState({screen: screenTypes.startScreen})
-							  }
-							]
-						});
-					}, 0);
-
+							}
+						]
+					});
 				}
 			});
 		} else {
@@ -183,7 +189,7 @@ export default class Game extends React.Component {
 					<CategoryChoice
 						chosenCategory={this.state.chosenCategory}
 						wordsToGuess={this.props.wordsToGuess}
-						startNewGame={this.startNewGame}
+						onCategoryChosen={this.onCategoryChosen}
 						chooseCategory={this.chooseCategory}
 						categoryLocalizedNames={CATEGORY_LOCALIZED_NAMES}/>}
 				{this.state.screen === screenTypes.gameField &&
