@@ -1,5 +1,6 @@
 import React from "react";
-import screenTypes from "./ScreenTypes";
+import screenTypes from "../../ScreenTypes";
+import './Header.css';
 
 export default class Header extends React.Component {
 	render() {

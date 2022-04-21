@@ -1,0 +1,13 @@
+.categories-container {
+    margin-top: 25px;
+    width: 185px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.categories {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    display: block;
+}

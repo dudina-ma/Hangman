@@ -1,9 +1,9 @@
 import React from "react";
 
-import Header from './Header';
-import GamePicture from './GamePicture';
-import CategoryChoice from "./CategoryChoice";
-import GameField from "./GameField";
+import Header from './Components/Header/Header';
+import GamePicture from './Components/GamePicture/GamePicture';
+import CategoryChoice from "./Components/CategoryChoice/CategoryChoice";
+import GameField from "./Components/GameField/GameField";
 import Description from "./Description";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';

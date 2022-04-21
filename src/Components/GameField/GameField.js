@@ -1,4 +1,5 @@
 import React from "react";
+import './GameField.css';
 
 export default class GameField extends React.Component {
 	constructor(props) {

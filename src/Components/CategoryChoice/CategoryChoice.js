@@ -1,4 +1,5 @@
 import React from "react";
+import './CategoryChoice.css';
 
 export default class CategoryChoice extends React.Component {
 	constructor(props) {
