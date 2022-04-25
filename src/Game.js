@@ -15,7 +15,7 @@ export default class Game extends React.Component {
 		this.state = {
 			screen: screenTypes.startScreen,
 			chosenCategory: Object.keys(this.props.wordsToGuess)[0],
-		}
+		};
 		this.showCategoryChoiceScreen = this.showCategoryChoiceScreen.bind(this);
 		this.chooseCategory = this.chooseCategory.bind(this);
 		this.startNewGame = this.startNewGame.bind(this);
@@ -120,7 +120,6 @@ export default class Game extends React.Component {
 		let guessLetterNumber = 0;
 
 		for (let char of this.state.wordToGuess) {
-
 			if (char === guessLetter) {
 				guessLetterNumber++;
 				isGuessed = true;
@@ -208,7 +207,7 @@ export default class Game extends React.Component {
 					<Description
 						pressDescriptionButton={this.pressDescriptionButton}/>}
 			</>
-		)
+		);
 	}
 }
 

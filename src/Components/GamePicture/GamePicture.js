@@ -5,5 +5,5 @@ import './GamePicture.css';
 export default function GamePicture() {
 	return (
 		<img className="game-picture" src={gameLogo} alt="Картинка игры" />
-	)
+	);
 }

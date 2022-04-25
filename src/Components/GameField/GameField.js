@@ -46,6 +46,6 @@ export default class GameField extends React.Component {
 				<button onClick={this.props.showHint} disabled={this.props.hintIsUsed} className="hint">Подсказка</button>
 				<button onClick={this.props.startNewGame} className="game-start">Новая игра</button>
 				</>
-		)
+		);
 	}
 }

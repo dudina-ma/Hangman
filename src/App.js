@@ -16,7 +16,7 @@ function App() {
 		<>
 			<Game wordsToGuess={WORDS_TO_GUESS}/>
 		</>
-	)
+	);
 }
 
 export default App;

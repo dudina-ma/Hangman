@@ -1,38 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import './CategoryChoice.css';
 
-export default class CategoryChoice extends React.Component {
-	constructor(props) {
-		super(props);
-		this.chooseCategory = this.chooseCategory.bind(this);
-		this.onCategoryChosen = this.onCategoryChosen.bind(this);
-		this.state = {
-			chosenCategory: this.props.chosenCategory,
-		}
-	}
+export default function CategoryChoice(props) {
+	const [category, setCategory] = useState(props.chosenCategory);
 
-	categoryNames = this.props.categories.map((category) =>
-	  <option key={category} value={category}>{this.props.categoryLocalizedNames[category]}</option>
+	const categoryNames = props.categories.map((category) =>
+	  <option key={category} value={category}>{props.categoryLocalizedNames[category]}</option>
 	);
 
-	chooseCategory(event) {
-		this.setState({
-			chosenCategory: event.target.value,
-		});
+	function onCategoryChosen() {
+		props.onCategoryChosen(category);
 	}
 
-	onCategoryChosen() {
-		this.props.onCategoryChosen(this.state.chosenCategory);
-	}
-
-	render() {
-		return (
-			<div className="categories-container">
-				<select className="categories" name="categories" value={this.state.chosenCategory} onChange={this.chooseCategory}>
-					{this.categoryNames}
-				</select>
-				<button onClick={this.onCategoryChosen} className="game-start">Начать игру</button>
-			</div>
-		)
-	}
+	return (
+		<div className="categories-container">
+			<select className="categories" name="categories" value={category} onChange={(event) => setCategory(event.target.value)}>
+				{categoryNames}
+			</select>
+			<button onClick={onCategoryChosen} className="game-start">Начать игру</button>
+		</div>
+	);
 }

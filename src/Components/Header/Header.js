@@ -13,6 +13,6 @@ export default class Header extends React.Component {
 						{this.props.screen === screenTypes.description ? 'Скрыть правила' : 'Показать правила'}</button>
 				</div>
 			</header>
-		)
+		);
 	}
 }
